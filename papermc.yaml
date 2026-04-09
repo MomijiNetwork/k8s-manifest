@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-survival
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mc-survival
+  template:
+    metadata:
+      labels:
+        app: mc-survival
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: saba2
+      containers:
+        - name: minecraft
+          image: itzg/minecraft-server:java25-latest
+          resources:
+            requests:
+              memory: "12Gi"
+          env:
+            - name: EULA
+              value: "TRUE"
+            - name: TYPE
+              value: "PAPER"
+            - name: VERSION
+              value: "LATEST"
+            - name: MEMORY
+              value: "12G"
+            - name: ONLINE_MODE
+              value: "FALSE"
+          volumeMounts:
+            - name: data
+              mountPath: /data
+              subPath: survival
+      volumes:
+        - name: data
+          hostPath:
+            path: /srv/minecraft
