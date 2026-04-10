@@ -42,9 +42,8 @@ metadata:
   name: filebrowser
   namespace: default
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 80
       targetPort: 80
-  selector:
-    app: filebrowser
+      nodePort: 30080
