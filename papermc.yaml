@@ -16,7 +16,7 @@ spec:
         kubernetes.io/hostname: saba2
       containers:
         - name: minecraft
-          image: itzg/minecraft-server:java25-latest
+          image: itzg/minecraft-server:java25
           resources:
             requests:
               memory: "12Gi"
