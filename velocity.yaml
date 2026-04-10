@@ -22,7 +22,13 @@ spec:
             - name: EULA
               value: "TRUE"
             - name: TYPE
+              value: "PROXY"
+            - name: PROXY_TYPE
               value: "VELOCITY"
+            - name: VELOCITY_VERSION
+              value: "LATEST"
+            - name: MEMORY
+              value: "1G"
             - name: VELOCITY_VERSION
               value: "LATEST"
             - name: MEMORY
