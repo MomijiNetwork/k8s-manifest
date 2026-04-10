@@ -25,7 +25,7 @@ spec:
               value: "LATEST"
             - name: MEMORY
               value: "1G"
-              - name: VERSION
+            - name: VERSION
               value: "LATEST"
             - name: DEBUG
               value: "false"
