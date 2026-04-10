@@ -19,6 +19,8 @@ spec:
         - name: velocity
           image: itzg/minecraft-server:java25
           env:
+            - name: EULA
+              value: "TRUE"
             - name: TYPE
               value: "VELOCITY"
             - name: VELOCITY_VERSION
