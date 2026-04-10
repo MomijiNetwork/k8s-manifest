@@ -17,7 +17,7 @@ spec:
         kubernetes.io/hostname: saba2
       containers:
         - name: velocity
-          image: itzg/minecraft-server:latest
+          image: itzg/minecraft-server:java25
           env:
             - name: TYPE
               value: "VELOCITY"
