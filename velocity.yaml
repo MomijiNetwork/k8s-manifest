@@ -28,6 +28,9 @@ spec:
           ports:
             - containerPort: 25577
               name: velocity
+          volumeMounts:
+            - name: proxy-data
+              mountPath: /server
         - name: playit
           image: ghcr.io/playit-cloud/playit-agent:latest
           env:
@@ -36,3 +39,8 @@ spec:
                 secretKeyRef:
                   name: playit-auth
                   key: key
+      volumes:
+        - name: proxy-data
+          hostPath:
+            path: /srv/minecraft/proxy
+            type: DirectoryOrCreate
