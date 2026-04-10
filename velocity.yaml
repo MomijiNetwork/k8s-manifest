@@ -25,6 +25,10 @@ spec:
               value: "LATEST"
             - name: MEMORY
               value: "1G"
+              - name: VERSION
+              value: "LATEST"
+            - name: DEBUG
+              value: "false"
           ports:
             - containerPort: 25577
               name: velocity
