@@ -15,11 +15,11 @@ spec:
       containers:
         - name: ttyd
           image: itzg/minecraft-server:java25
-          command: ["/bin/bash", "-c"]
+          tty: true
+          stdin: true
+          command: ["ttyd"]
           args:
-            - |
-              apt-get update && apt-get install -y ttyd
-              ttyd -p 7681 bash
+            - ["-p", "7681", "bash"]
           env:
             - name: RCON_HOST
               value: "survival"
