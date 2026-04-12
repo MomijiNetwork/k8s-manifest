@@ -15,7 +15,8 @@ spec:
       containers:
         - name: ttyd
           image: tsl0922/ttyd:latest
-          args: ["bash"]
+          command: ["/usr/bin/ttyd"]
+          args: ["-p", "7681", "bash"]
           ports:
             - containerPort: 7681
 ---
