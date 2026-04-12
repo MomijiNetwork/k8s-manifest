@@ -12,7 +12,6 @@ spec:
       labels:
         app: mc-creative
     spec:
-      # ここで saba2 を指定します
       nodeSelector:
         kubernetes.io/hostname: saba2
       containers:
@@ -23,9 +22,19 @@ spec:
               value: "TRUE"
             - name: TYPE
               value: "PAPER"
+            - name: ONLINE_MODE
+              value: "FALSE"
             - name: GAMEMODE
               value: "creative"
-            - name: ONLINE_MODE
+            - name: FORCE_GAMEMODE
+              value: "TRUE"
+            - name: DIFFICULTY
+              value: "peaceful"
+            - name: SPAWN_PROTECTION
+              value: "0"
+            - name: LEVEL_TYPE
+              value: "flat"
+            - name: GENERATE_STRUCTURES
               value: "FALSE"
             - name: ENABLE_RCON
               value: "TRUE"
@@ -34,9 +43,6 @@ spec:
                 secretKeyRef:
                   name: rcon-auth
                   key: password
-          ports:
-            - containerPort: 25565
-            - containerPort: 25575
           volumeMounts:
             - name: data
               mountPath: /data
