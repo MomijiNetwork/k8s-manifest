@@ -20,8 +20,10 @@ spec:
           args:
             - |
               apt-get update && apt-get install -y ttyd
-              ttyd -p 7681 -W bash
+              ttyd -p 7681 -W rcon-cli
           env:
+            - name: EULA
+              value: "TRUE"
             - name: RCON_HOST
               value: "minecraft-proxy"
             - name: RCON_PORT
