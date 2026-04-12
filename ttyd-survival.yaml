@@ -19,7 +19,9 @@ spec:
           stdin: true
           command: ["ttyd"]
           args:
-            - ["-p", "7681", "bash"]
+            - "-p"
+            - "7681"
+            - "bash"
           env:
             - name: RCON_HOST
               value: "survival"
