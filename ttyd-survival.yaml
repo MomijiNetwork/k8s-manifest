@@ -17,11 +17,11 @@ spec:
           image: itzg/minecraft-server:java25
           tty: true
           stdin: true
-          command: ["ttyd"]
+          command: ["/bin/bash", "-c"]
           args:
-            - "-p"
-            - "7681"
-            - "bash"
+            - |
+              apt-get update && apt-get install -y ttyd
+              ttyd -p 7681 -W rcon-cli
           env:
             - name: RCON_HOST
               value: "survival"
