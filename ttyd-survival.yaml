@@ -19,7 +19,7 @@ spec:
           args:
             - |
               apt-get update && apt-get install -y ttyd
-              ttyd -p 7681 rcon-cli
+              ttyd -p 7681 bash
           env:
             - name: RCON_HOST
               value: "survival"
