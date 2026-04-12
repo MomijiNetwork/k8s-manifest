@@ -17,11 +17,10 @@ spec:
           image: itzg/minecraft-server:java25
           tty: true
           stdin: true
-          command: ["/bin/bash", "-c"]
           args:
             - |
               apt-get update && apt-get install -y ttyd
-              ttyd -p 7681 -W rcon-cli
+              ttyd -p 7681 -W bash
           env:
             - name: RCON_HOST
               value: "minecraft-proxy"
