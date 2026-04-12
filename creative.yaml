@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-creative
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mc-creative
+  template:
+    metadata:
+      labels:
+        app: mc-creative
+    spec:
+      # ここで saba2 を指定します
+      nodeSelector:
+        kubernetes.io/hostname: saba2
+      containers:
+        - name: minecraft
+          image: itzg/minecraft-server:java25
+          env:
+            - name: EULA
+              value: "TRUE"
+            - name: TYPE
+              value: "PAPER"
+            - name: GAMEMODE
+              value: "creative"
+            - name: ONLINE_MODE
+              value: "FALSE"
+            - name: ENABLE_RCON
+              value: "TRUE"
+            - name: RCON_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rcon-auth
+                  key: password
+          ports:
+            - containerPort: 25565
+            - containerPort: 25575
+          volumeMounts:
+            - name: data
+              mountPath: /data
+              subPath: creative
+      volumes:
+        - name: data
+          hostPath:
+            path: /srv/minecraft
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: creative
+spec:
+  type: NodePort
+  ports:
+    - name: minecraft
+      port: 25565
+      targetPort: 25565
+    - name: rcon
+      port: 25575
+      targetPort: 25575
+  selector:
+    app: mc-creative
