@@ -31,7 +31,6 @@ spec:
           volumeMounts:
             - name: proxy-data
               mountPath: /server
-              subPath: proxy
         - name: playit
           image: ghcr.io/playit-cloud/playit-agent:latest
           env:
